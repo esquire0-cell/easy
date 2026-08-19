@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="이지테 Easy Test — 학교 양식 그대로 시험 원안지를 만드는 교사용 프로그램. 내려받기와 설명서.">
+<title>이지테-EasyTest</title>
+<!-- 탭 아이콘: 프로그램 로고를 파일에 박아 둔다 (단독 HTML 이라 바깥 파일을 안 쓴다) -->
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&family=IBM+Plex+Sans+KR:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+:root{
+  --paper:#faf9f6;
+  --sheet:#ffffff;
+  --ink:#1a1814;
+  --pencil:#6b6559;
+  --faint:#918a7c;
+  --rule:#cfc9bc;
+  --hair:#e4e0d6;
+  --red:#c8352c;
+  --red-soft:#f6e9e6;
+
+  --F:'Nanum Myeongjo','Batang',serif;
+  --B:'IBM Plex Sans KR','Malgun Gothic',sans-serif;
+  --M:'IBM Plex Mono','Consolas',monospace;
+
+  --wrap:920px;
+  --s1:8px; --s2:16px; --s3:24px; --s4:40px; --s5:64px; --s6:96px;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --paper:#100f0c;
+    --sheet:#17161250;
+    --ink:#ece7dc;
+    --pencil:#a49c8c;
+    --faint:#7d7566;
+    --rule:#3a352c;
+    --hair:#2a261f;
+    --red:#e8615a;
+    --red-soft:#2a1a17;
+  }
+}
+:root[data-theme="dark"]{
+  --paper:#100f0c;
+  --sheet:#17161250;
+  --ink:#ece7dc;
+  --pencil:#a49c8c;
+  --faint:#7d7566;
+  --rule:#3a352c;
+  --hair:#2a261f;
+  --red:#e8615a;
+  --red-soft:#2a1a17;
+}
+
+*{box-sizing:border-box;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:var(--B);
+  font-weight:300;
+  font-size:15px;
+  line-height:1.9;
+  letter-spacing:.01em;
+  -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--s3);}
+
+/* ── 양식 머리 ─────────────────────────────── */
+.sheet-top{border-bottom:2px solid var(--ink);}
+.stamp{
+  display:flex;justify-content:space-between;align-items:baseline;
+  gap:var(--s2);flex-wrap:wrap;
+  padding:var(--s3) 0 10px;
+  font-family:var(--M);font-size:11px;letter-spacing:.14em;
+  color:var(--faint);text-transform:uppercase;
+}
+.stamp b{color:var(--red);font-weight:500;}
+
+.masthead{padding:var(--s5) 0 var(--s4);}
+.eyebrow{
+  font-family:var(--M);font-size:11px;letter-spacing:.3em;
+  text-transform:uppercase;color:var(--red);margin:0 0 var(--s3);
+}
+h1{
+  font-family:var(--F);font-weight:800;
+  font-size:clamp(52px,9vw,104px);line-height:.95;letter-spacing:-.02em;
+  margin:0 0 var(--s2);text-wrap:balance;
+}
+h1 .en{
+  display:block;font-family:var(--M);font-weight:400;
+  font-size:clamp(13px,1.6vw,17px);letter-spacing:.42em;
+  color:var(--faint);margin-top:18px;text-transform:uppercase;
+}
+.lede{
+  font-family:var(--F);font-size:clamp(19px,2.4vw,25px);
+  line-height:1.85;max-width:34em;margin:var(--s3) 0 0;color:var(--ink);
+}
+.lede em{font-style:normal;border-bottom:2px solid var(--red);padding-bottom:1px;}
+.sub{max-width:36em;color:var(--pencil);margin:var(--s2) 0 0;}
+
+/* ── 양식 정보표 ───────────────────────────── */
+.form-table{
+  width:100%;border-collapse:collapse;margin:var(--s4) 0 0;
+  font-family:var(--M);font-size:12.5px;
+}
+.form-table th,.form-table td{
+  border:1px solid var(--rule);padding:11px 14px;text-align:left;
+  font-weight:400;vertical-align:middle;
+}
+.form-table th{
+  width:132px;color:var(--faint);background:var(--red-soft);
+  letter-spacing:.1em;font-size:11px;text-transform:uppercase;
+  font-weight:500;
+}
+.form-table td{color:var(--ink);}
+
+/* ── 내려받기 ──────────────────────────────── */
+.cta-row{display:flex;gap:var(--s2);flex-wrap:wrap;align-items:center;margin:var(--s4) 0 var(--s5);}
+.btn{
+  display:inline-flex;align-items:center;gap:12px;
+  text-decoration:none;font-family:var(--B);font-weight:500;
+  font-size:14px;letter-spacing:.06em;padding:16px 30px;
+  border:1px solid var(--ink);transition:transform .18s ease,background .18s ease,color .18s ease;
+}
+.btn-main{background:var(--ink);color:var(--paper);border-color:var(--ink);}
+.btn-main:hover{background:var(--red);border-color:var(--red);transform:translateY(-2px);}
+.btn .arr{font-family:var(--M);transition:transform .18s ease;}
+.btn:hover .arr{transform:translateX(4px);}
+.btn:focus-visible{outline:2px solid var(--red);outline-offset:3px;}
+.dl-note{font-family:var(--M);font-size:11.5px;color:var(--faint);letter-spacing:.04em;}
+.dl-note a{color:var(--red);text-decoration:none;border-bottom:1px solid var(--hair);}
+.dl-note a:hover{border-bottom-color:var(--red);}
+.dl-note a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+
+/* ── 절 머리 ───────────────────────────────── */
+section{border-top:1px solid var(--rule);padding:var(--s5) 0;}
+.sec-head{display:flex;align-items:baseline;gap:14px;margin:0 0 var(--s4);}
+.sec-no{
+  font-family:var(--M);font-size:11px;letter-spacing:.24em;
+  color:var(--red);text-transform:uppercase;white-space:nowrap;
+}
+h2{
+  font-family:var(--F);font-weight:700;font-size:clamp(26px,3.6vw,36px);
+  letter-spacing:-.01em;margin:0;line-height:1.35;text-wrap:balance;
+}
+.sec-hint{color:var(--pencil);max-width:38em;margin:calc(var(--s3) * -1) 0 var(--s4);}
+
+/* ── 도구 넷 (답항) ────────────────────────── */
+.tools{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.tool{
+  background:var(--paper);padding:26px 28px;
+  display:grid;grid-template-columns:34px 1fr;gap:18px;align-items:start;
+}
+.tool-mark{
+  font-family:var(--F);font-size:26px;line-height:1;color:var(--red);
+  padding-top:2px;
+}
+.tool-name{font-family:var(--F);font-size:21px;font-weight:700;margin:0 0 4px;letter-spacing:.01em;}
+.tool-kicker{
+  font-family:var(--M);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--faint);margin:0 0 10px;
+}
+.tool-desc{margin:0;color:var(--pencil);font-size:14px;line-height:1.85;}
+@media(min-width:720px){.tools{grid-template-columns:1fr 1fr;}}
+
+/* ── 탭 설명서 ─────────────────────────────── */
+.tabs{border:1px solid var(--rule);background:var(--paper);}
+.tablist{
+  display:flex;flex-wrap:wrap;gap:0;
+  border-bottom:1px solid var(--rule);background:var(--red-soft);
+}
+.tab{
+  appearance:none;border:0;background:transparent;cursor:pointer;
+  font-family:var(--F);font-size:16px;font-weight:700;color:var(--pencil);
+  padding:15px 22px;letter-spacing:.02em;
+  border-bottom:2px solid transparent;margin-bottom:-1px;
+  transition:color .16s ease,border-color .16s ease;
+}
+.tab:hover{color:var(--ink);}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--red);}
+.tab:focus-visible{outline:2px solid var(--red);outline-offset:-4px;}
+.panel{padding:var(--s4) clamp(20px,4vw,40px);}
+.panel[hidden]{display:none;}
+.panel h3{
+  font-family:var(--F);font-size:19px;font-weight:700;
+  margin:var(--s4) 0 10px;letter-spacing:.01em;
+}
+.panel h3:first-child{margin-top:0;}
+/* 그냥 안내가 아니라 '이건 선생님이 하셔야 한다' 는 대목 — 붉은 눈금을 세워 가른다 */
+.panel h3.warn-head{
+  color:var(--red);
+  border-left:3px solid var(--red);
+  padding-left:12px;
+  margin-left:-15px;
+}
+.panel p{margin:0 0 12px;color:var(--pencil);max-width:60ch;}
+.panel p strong{color:var(--ink);font-weight:500;}
+
+/* 화면 갈무리.
+   ⚠️ 그림은 **파일 안에 박는다**(data: URI). 이 페이지는 혼자 돌아다니는
+   파일이라 바깥 그림을 걸면 옮기는 순간 깨진 네모만 남는다.
+   ⚠️ 갈무리는 밝은 화면이라 어두운 결에서는 저 혼자 환하다. 테두리를 둘러
+   '창을 찍은 것' 으로 읽히게 하고, 어두울 때만 아주 조금 눌러 둔다. */
+figure.shot{margin:0 0 var(--s3);}
+figure.shot img{
+  display:block;width:100%;max-width:592px;height:auto;
+  border:1px solid var(--rule);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]) figure.shot img{filter:brightness(.88);}
+}
+:root[data-theme="dark"] figure.shot img{filter:brightness(.88);}
+figure.shot figcaption{
+  margin-top:10px;max-width:56ch;
+  font-size:13.5px;line-height:1.75;color:var(--pencil);
+}
+figure.shot figcaption strong{color:var(--ink);font-weight:500;}
+
+/* 차례 목록 */
+ol.steps{list-style:none;counter-reset:step;margin:0 0 var(--s3);padding:0;}
+ol.steps li{
+  counter-increment:step;position:relative;
+  padding:0 0 16px 42px;color:var(--pencil);max-width:58ch;
+}
+ol.steps li::before{
+  content:counter(step);position:absolute;left:0;top:2px;
+  width:26px;height:26px;border:1px solid var(--rule);border-radius:50%;
+  display:grid;place-items:center;
+  font-family:var(--M);font-size:12px;color:var(--red);background:var(--paper);
+}
+ol.steps li strong{color:var(--ink);font-weight:500;}
+ol.steps li:last-child{padding-bottom:0;}
+
+ul.plain{margin:0 0 var(--s3);padding:0 0 0 20px;color:var(--pencil);}
+ul.plain li{margin-bottom:9px;max-width:58ch;}
+ul.plain li strong{color:var(--ink);font-weight:500;}
+
+code,.mono{
+  font-family:var(--M);font-size:.9em;
+  background:var(--red-soft);padding:2px 7px;color:var(--ink);
+  word-break:break-all;
+}
+.path{
+  display:block;font-family:var(--M);font-size:12px;
+  border-left:2px solid var(--red);background:var(--red-soft);
+  padding:12px 16px;margin:0 0 var(--s3);color:var(--ink);
+  overflow-x:auto;white-space:nowrap;
+}
+
+/* ── ※ 확인 사항 ───────────────────────────── */
+.notice{border:2px solid var(--ink);}
+.notice-head{
+  background:var(--ink);color:var(--paper);
+  font-family:var(--F);font-size:17px;font-weight:700;
+  padding:12px 22px;letter-spacing:.06em;
+}
+.notice-body{display:grid;gap:1px;background:var(--rule);}
+.note{background:var(--paper);padding:22px 24px;}
+.note-tag{
+  font-family:var(--M);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red);margin:0 0 8px;
+}
+.note-title{font-family:var(--F);font-size:18px;font-weight:700;margin:0 0 8px;line-height:1.5;}
+.note p{margin:0;color:var(--pencil);font-size:14px;max-width:62ch;}
+.note p + p{margin-top:8px;}
+
+/* ── 꼬리 ──────────────────────────────────── */
+footer{
+  border-top:2px solid var(--ink);padding:var(--s4) 0 var(--s5);
+  display:flex;justify-content:space-between;gap:var(--s2);flex-wrap:wrap;
+  font-family:var(--M);font-size:11.5px;letter-spacing:.1em;color:var(--faint);
+}
+footer a{color:var(--red);text-decoration:none;border-bottom:1px solid transparent;}
+footer a:hover{border-bottom-color:var(--red);}
+footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+
+@media (prefers-reduced-motion:reduce){
+  *{transition:none !important;animation:none !important;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="sheet-top">
+    <div class="stamp">
+      <span>Hirameki · 교사용 도구</span>
+      <span><b id="rel-ver">V1.0.0</b> · <span id="rel-date">2026-08-18</span></span>
+    </div>
+  </div>
+
+  <header class="masthead">
+    <p class="eyebrow">시험 원안지 자동 작성</p>
+    <h1>이지테<span class="en">Easy Test</span></h1>
+    <p class="lede">
+      교과서와 기출 PDF를 올리면, <em>학교 양식 그대로</em> 채워진
+      한글 원안지가 나옵니다. 문항·배점·정답해설까지 한 번에.
+    </p>
+    <p class="sub">
+      양식은 학교마다 다릅니다. 이지테는 선생님이 올린 그 양식 파일을 읽어
+      표·글자모양·단 설정·답항 눈금까지 그대로 따릅니다. 새 서식에 옮겨 적을
+      필요가 없습니다.
+    </p>
+
+    <table class="form-table">
+      <tr><th>파일</th><td><span id="dl-name">EasyTest-win64.zip</span> · <span id="dl-size">80.5MB</span></td></tr>
+      <tr><th>운영체제</th><td>Windows 10 / 11 (64비트)</td></tr>
+      <tr><th>필요한 것</th><td>한글(HWP) 설치 · API 키 (구글 AI 스튜디오 · NVIDIA NIM)</td></tr>
+      <tr><th>설치</th><td>없음 — 압축을 풀고 폴더째 두면 됩니다</td></tr>
+    </table>
+
+    <div class="cta-row">
+      <!-- ⚠️⚠️ **자산 이름은 판마다 같아야 한다** (`EasyTest-win64.zip`). 이 주소의
+           `latest/` 는 최신 릴리스로 넘겨 주기만 하고 **파일 이름은 그대로 들고 가므로**,
+           이름에 판 번호가 들어가면 새 판마다 404 가 난다 (08-19 에 실제로 그랬다).
+           ⚠️ 아래 스크립트가 못 돌아도(한도 초과·JS 꺼짐·응답 전에 누름) 이 주소만으로
+           늘 최신이 받아진다. 판 번호가 박힌 주소를 적어 두면 **조용히 옛 판**이 나간다. -->
+      <a class="btn btn-main" id="dl-main" href="https://github.com/esquire0-cell/easy/releases/latest/download/EasyTest-win64.zip">
+        내려받기 <span class="arr">↓</span>
+      </a>
+      <!-- ⚠️ 단추로 두지 않는다 — 받으러 온 사람에게 고를 것을 둘 주면 손이 멎는다.
+           그래도 **지우지는 않는다.** 위 주소가 어긋나면(자산 이름이 바뀌는 등) 이
+           링크가 되돌아갈 유일한 자리다. 눈에 안 띄는 글줄로 내려 둔다. -->
+      <span class="dl-note">안 받아지면 <a href="https://github.com/esquire0-cell/easy/releases/latest"
+        target="_blank" rel="noopener">깃허브 릴리스</a>에서 받으세요</span>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-no">무엇을 하나</span>
+      <h2>도구 넷이 들어 있습니다</h2>
+    </div>
+    <div class="tools">
+      <div class="tool">
+        <div class="tool-mark">①</div>
+        <div>
+          <p class="tool-kicker">이지메이커</p>
+          <h3 class="tool-name">문제 만들기</h3>
+          <p class="tool-desc">
+            학교 양식과 교과서·기출을 올리면 문항을 만듭니다. 과목·문항 수·유형·배점을
+            정할 수 있고, 정답해설지도 같이 나옵니다. 만든 문항은 두 모델이 서로 풀어
+            검산하고, 미심쩍은 것은 표시해 둡니다.
+          </p>
+        </div>
+      </div>
+      <div class="tool">
+        <div class="tool-mark">②</div>
+        <div>
+          <p class="tool-kicker">이지폼</p>
+          <h3 class="tool-name">옮겨 적기</h3>
+          <p class="tool-desc">
+            이미 있는 시험지 PDF나 사진을 학교 양식의 한글 파일로 옮깁니다. 지문·&lt;보기&gt;
+            상자·표·그림·밑줄·빈칸까지 원본을 보고 되살립니다. 손으로 다시 치지 않습니다.
+          </p>
+        </div>
+      </div>
+      <div class="tool">
+        <div class="tool-mark">③</div>
+        <div>
+          <p class="tool-kicker">이지커스텀</p>
+          <h3 class="tool-name">학습지 만들기</h3>
+          <p class="tool-desc">
+            형성평가지와 자기주도학습지 두 양식이 들어 있습니다. 이쪽은 양식을 따로
+            올리지 않고 둘 중에 고르기만 하면 됩니다.
+          </p>
+        </div>
+      </div>
+      <div class="tool">
+        <div class="tool-mark">④</div>
+        <div>
+          <p class="tool-kicker">이지아카이브</p>
+          <h3 class="tool-name">문제은행</h3>
+          <p class="tool-desc">
+            만든 문항을 모아 둡니다. 최근 작업은 15건까지 남아, 그때 올린 자료와 화면까지
+            그대로 되살려 <strong>이어서</strong> 쓸 수 있습니다.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-no">설명서</span>
+      <h2>처음 쓰실 때</h2>
+    </div>
+
+    <div class="tabs">
+      <div class="tablist" role="tablist" aria-label="설명서">
+        <button class="tab" role="tab" id="t-1" aria-controls="p-1" aria-selected="true">설치</button>
+        <button class="tab" role="tab" id="t-2" aria-controls="p-2" aria-selected="false">준비물</button>
+        <button class="tab" role="tab" id="t-3" aria-controls="p-3" aria-selected="false">문제 만들기</button>
+        <button class="tab" role="tab" id="t-4" aria-controls="p-4" aria-selected="false">옮겨 적기</button>
+        <button class="tab" role="tab" id="t-5" aria-controls="p-5" aria-selected="false">학습지</button>
+        <button class="tab" role="tab" id="t-6" aria-controls="p-6" aria-selected="false">업데이트</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-1" aria-labelledby="t-1" tabindex="0">
+        <h3>내려받기부터 실행까지</h3>
+        <ol class="steps">
+          <li>위의 <strong>내려받기</strong>를 눌러 <code>EasyTest-…-win64.zip</code>을 받습니다. 늘 가장 새 버전이 받아집니다.</li>
+          <li><strong>압축을 풀기 전에</strong> zip 파일을 오른쪽 클릭 → <strong>속성</strong> →
+              <strong>차단 해제</strong>에 체크하고 <strong>확인</strong>. 바로 아래에서 그림으로 보여 드립니다.</li>
+          <li>이제 압축을 풉니다. <strong>이지테</strong> 폴더가 나옵니다.</li>
+          <li>그 폴더를 원하는 자리에 <strong>통째로</strong> 둡니다. 문서 폴더도 좋고 바탕화면도 좋습니다.</li>
+          <li>폴더 안의 <code>이지테.exe</code>를 실행합니다. 자주 쓰시려면 이 파일에 <strong>바로가기</strong>를 만들어 두세요.</li>
+        </ol>
+
+        <h3 class="warn-head">압축을 풀기 전에 — 차단 해제</h3>
+        <p>
+          이 한 걸음이면 <strong>파란 경고창이 아예 안 뜹니다.</strong> 인터넷에서 받은 파일에는
+          윈도우가 ‘딴 데서 온 것’이라는 표식을 붙여 두는데, <strong>압축을 풀면 그 표식이 안의
+          파일에까지 옮아붙습니다.</strong> 풀기 전에 zip 하나만 떼어 두면 한 번에 끝납니다.
+        </p>
+
+        <figure class="shot">
+          <!-- ⚠️ 그림을 파일 안에 박아 뒀다(data: URI). 이 페이지는 파일 하나로
+               돌아다니는 것이라 바깥 그림을 걸면 옮기는 순간 깨진다. -->
+          <img alt="내려받은 EasyTest zip 파일의 속성 창. 맨 아래 ‘보안’ 줄에 ‘이 파일은 다른 컴퓨터로부터 왔으며 사용자의 컴퓨터를 보호하기 위해 차단되었을 수도 있습니다’라는 글과 ‘차단 해제(K)’ 체크상자가 있다."
+               width="592" height="757" src="data:image/png;base64,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">
+          <figcaption>
+            받은 <strong>zip 파일에 오른쪽 클릭 → 속성</strong>을 누르면 이 창이 뜹니다.
+            창 <strong>맨 아래 ‘보안’ 줄</strong>에 “이 파일은 다른 컴퓨터로부터 왔으며…”라는
+            글과 함께 <strong>차단 해제(K)</strong> 체크상자가 있습니다.
+            체크하고 <strong>확인</strong>을 누르면 끝입니다.
+            <br><br>
+            <strong>이 ‘보안’ 줄이 안 보이면 그냥 압축을 푸셔도 됩니다.</strong> 표식이 없다는
+            뜻이라 경고도 안 뜹니다. 줄은 표식이 붙은 파일에만 나옵니다.
+          </figcaption>
+        </figure>
+
+        <h3>그냥 푸셨다면 — 파란 경고창</h3>
+        <p>
+          차단 해제를 깜빡하고 압축을 푸셨어도 <strong>프로그램은 그대로 쓸 수 있습니다.</strong>
+          <strong>“Windows의 PC 보호”</strong> 창이 뜨면 <strong>추가 정보</strong>를 누르고
+          <strong>실행</strong>을 누르세요. 개인이 만든 프로그램이라 마이크로소프트에 값을 내고
+          받는 서명이 없어서 그렇습니다. 백신이 잠시 잡아 두는 일도 있습니다.
+        </p>
+        <p>
+          이 경고는 <strong>맨 처음 한 번뿐입니다.</strong> 뒤에 새 버전이 나와 프로그램이 스스로
+          업데이트할 때는 뜨지 않습니다 — 브라우저를 거치지 않고 받아서 표식이 안 붙습니다.
+        </p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-2" aria-labelledby="t-2" tabindex="0" hidden>
+        <h3>한글(HWP)이 깔려 있어야 합니다</h3>
+        <p>
+          이지테는 한글 프로그램을 직접 부려서 문서를 씁니다. 그래서 한글이 없는 컴퓨터에서는
+          문제지를 만들지 못합니다. 만드는 동안 한글 창이 저절로 떴다 닫히는데 <strong>정상입니다</strong> —
+          그동안은 손대지 마세요.
+        </p>
+        <h3>API 키는 두 곳에서 받아 넣습니다</h3>
+        <p>
+          문항을 만드는 것은 AI입니다. 이지테는 <strong>구글 AI 스튜디오</strong>와
+          <strong>NVIDIA NIM</strong> 두 곳을 씁니다. 둘 다 무료로 키를 받을 수 있고,
+          <strong>설정 › API 키</strong> 탭에 각각 넣으면 됩니다. 넣은 키는 그 컴퓨터에만
+          저장되고 프로그램에는 아무 키도 들어 있지 않습니다.
+        </p>
+        <ul class="plain">
+          <li><strong>구글 AI 스튜디오 · 1순위</strong> — 문항을 짓고 자료를 읽는 주력입니다. 빠릅니다.</li>
+          <li><strong>NVIDIA NIM · 2순위</strong> — 구글 한도가 차거나 서버가 답이 없을 때 대신 받습니다.
+              키는 <span class="mono">nvapi-</span> 로 시작합니다. 설정 화면의
+              <strong>[NVIDIA 키 발급받기]</strong> · <strong>[발급 가이드]</strong> 단추가
+              받는 자리와 순서를 짚어 드립니다.</li>
+        </ul>
+        <p>
+          <strong>하나만 넣어도 돌아가기는 합니다.</strong> 다만 정답 검산은 서로 다른 두 곳의
+          모델이 같은 문항을 풀어 견주는 것이라, 한 곳만 넣으면 모든 문항에
+          <strong>‘한 모델만 풀었습니다’</strong>가 붙습니다. <strong>두 개 다 넣으시는 편이 좋습니다.</strong>
+        </p>
+        <h3>만든 파일은 어디에 저장되나</h3>
+        <p>
+          따로 정하지 않으면 <strong>올린 양식 파일이 있는 폴더</strong>에 저장됩니다.
+          지금 어디에 저장되는지는 <strong>설정</strong> 화면에서 경로로 보여 드립니다.
+          파일 이름에는 만든 날짜와 시각이 붙습니다.
+        </p>
+        <span class="path">공통국어_20260818_1930.hwp · 공통국어_20260818_1930_정답해설.hwp</span>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-3" aria-labelledby="t-3" tabindex="0" hidden>
+        <h3>이지메이커 — 없던 문항을 만듭니다</h3>
+        <ol class="steps">
+          <li><strong>학교 양식</strong> 한글 파일을 끌어다 놓습니다. 올해 원안지 양식이면 됩니다.</li>
+          <li><strong>참고 자료</strong>를 올립니다. 교과서·지난 시험지·문제집을 PDF나 사진으로 넣고, 쓸 쪽 범위를 정합니다.</li>
+          <li>과목과 <strong>문항 수·유형·배점</strong>을 정합니다. 객관식과 논술형을 섞을 수 있습니다.</li>
+          <li>만들기를 누르고 기다립니다. 끝나면 문제지와 <strong>정답해설지</strong>가 같이 나옵니다.</li>
+        </ol>
+        <h3>스스로 검산합니다</h3>
+        <p>
+          만든 문항은 서로 다른 AI 두 개가 풀어 봅니다. 답이 갈리거나 못 푸는 문항은
+          <strong>‘확인 필요’</strong>로 표시해 둡니다. 그림이 든 문항처럼 AI가 원래 못 푸는 것도
+          솔직히 그렇다고 적습니다.
+        </p>
+        <h3 class="warn-head">검산이 안 되는 문항이 있습니다 — 그 몫은 선생님이</h3>
+        <p>
+          무료로 받는 API에는 <strong>그림을 못 보는 모델</strong>이 섞여 있습니다. 글은 읽어도
+          이미지는 아예 받지 못하는 모델이라, <strong>그림·도형·그래프·사진을 봐야 풀리는 문항은
+          검산 자체가 돌지 않습니다.</strong> 표를 그림으로 오려 붙인 문항도 마찬가지입니다.
+        </p>
+        <p>
+          이런 문항에는 프로그램이 <strong>‘그림을 봐야 푸는 문항이라 정답을 만들지 못했습니다’</strong>라고
+          적어 둡니다. 정답이 비어 있거나 이 말이 붙은 문항은
+          <strong>선생님이 직접 풀어 정답과 배점을 확인해 주세요.</strong> 검산을 통과했다는 표시가
+          없는 것이지, 문항이 틀렸다는 뜻은 아닙니다.
+        </p>
+        <p>
+          그림이 많은 과목(수학·과학·미술 등)일수록 이렇게 남는 문항이 많습니다.
+          <strong>정답해설지를 그대로 배부하기 전에 꼭 한 번 훑어 주세요.</strong>
+        </p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-4" aria-labelledby="t-4" tabindex="0" hidden>
+        <h3>이지폼 — 있는 시험지를 양식에 옮깁니다</h3>
+        <p>
+          종이로만 있는 기출, 남이 준 PDF, 찍어 온 사진을 <strong>학교 양식의 한글 파일</strong>로
+          바꿉니다. 새로 만드는 것이 아니라 <strong>그대로 옮겨 적는</strong> 쪽입니다.
+        </p>
+        <ul class="plain">
+          <li><strong>지문과 &lt;보기&gt; 상자</strong>를 원본에서 오려 옵니다. 긴 지문이 잘리지 않습니다.</li>
+          <li><strong>표·그림</strong>은 원본에서 떠서 넣습니다.</li>
+          <li><strong>밑줄·빈칸·㉠㉡ 표시</strong>도 원본을 보고 되살립니다.</li>
+          <li><strong>수식</strong>은 한글 수식 개체로 넣습니다. 글자로 인쇄되지 않습니다.</li>
+        </ul>
+        <p>
+          쓰실 쪽 범위를 정해 주시면 그 안만 읽습니다. 옮긴 문항에도 정답해설을 붙일 수 있습니다.
+        </p>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-5" aria-labelledby="t-5" tabindex="0" hidden>
+        <h3>이지커스텀 — 수업용 학습지</h3>
+        <p>
+          시험지와 달리 <strong>양식을 올리지 않습니다.</strong> 프로그램 안에 두 가지가
+          들어 있어 <strong>고르기만 하면 됩니다.</strong> 오늘 나간 진도로 만들어
+          <strong>수업이 끝난 뒤 학생 확인용</strong>으로 바로 쓰시라고 만든 도구입니다.
+        </p>
+        <ul class="plain">
+          <li><strong>형성평가지</strong> — 수업 끝에 오늘 배운 것이 남았는지 확인하는 용.
+              차시 마무리 10분에 풀리기 좋은 분량으로 나옵니다.</li>
+          <li><strong>자기주도학습지</strong> — 학생이 혼자 풀며 정리하는 용.
+              과제나 보충·방과후 자료로 내주기 좋습니다.</li>
+        </ul>
+        <p>
+          쓰는 차례는 간단합니다. <strong>양식을 고르고 → 교과서나 수업 자료를 올리고 →
+          문항 수를 정하면</strong> 끝입니다. 정답해설도 같이 붙일 수 있어, 학생이 스스로
+          맞춰 보게 나눠 주셔도 됩니다.
+        </p>
+        <h3>학교 로고와 학교 정보가 양식에 저절로 들어갑니다</h3>
+        <p>
+          <strong>설정 › 학교 정보</strong>에 한 번 넣어 두시면 <strong>두 양식 모두의 머리표에
+          자동으로 채워집니다.</strong> 학습지를 만들 때마다 로고를 붙이거나 학교 이름을 치실
+          필요가 없습니다.
+        </p>
+        <ul class="plain">
+          <li><strong>학교 로고</strong> — 설정에서 그림(PNG·JPG) 파일을 고르면 머리표 자리에 그림으로
+              앉습니다. <strong>크게 만든 그림일수록 인쇄가 또렷합니다.</strong> 넣지 않으면 그 칸은
+              빈 채로 나옵니다.</li>
+          <li><strong>학교명</strong> — 한 해 내내 안 바뀌는 값이라 한 번만 적으면 됩니다.</li>
+          <li><strong>과목명</strong> — 설정에 적은 것이 기본값이고, 만들 때 과목을 따로 적으면 그쪽이 우선합니다.</li>
+          <li><strong>단원</strong>은 설정이 아니라 <strong>만들 때마다</strong> 화면에 적은 것이 그대로 들어갑니다.</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-6" aria-labelledby="t-6" tabindex="0" hidden>
+        <h3>새 버전이 나오면 알려 드립니다</h3>
+        <p>
+          프로그램을 켜고 몇 초 뒤에 조용히 확인합니다. 새 버전이 있으면 무엇이 바뀌었는지와
+          받을 크기를 보여 드리고, <strong>[지금 업데이트]</strong>를 누르면 그 자리에서 받아
+          갱신합니다. 프로그램이 한 번 꺼졌다 다시 켜집니다.
+        </p>
+        <ul class="plain">
+          <li><strong>설정과 키, 지난 기록은 그대로 남습니다.</strong> 다시 넣지 않으셔도 됩니다.</li>
+          <li>업데이트 중에는 만들던 문서를 <strong>먼저 저장</strong>해 주세요.</li>
+          <li>인터넷이 안 되면 아무 말 없이 넘어갑니다. 프로그램은 그대로 켜집니다.</li>
+          <li>직접 확인하시려면 <strong>설정 › 업데이트 확인</strong>을 누르세요.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <span class="sec-no">주의</span>
+      <h2>먼저 알아 두실 것</h2>
+    </div>
+
+    <div class="notice">
+      <div class="notice-head">※ 확인 사항</div>
+      <div class="notice-body">
+
+        <div class="note">
+          <p class="note-tag">설치</p>
+          <p class="note-title">exe 파일 하나만 옮기면 켜지지 않습니다</p>
+          <p>
+            압축을 풀면 <span class="mono">이지테.exe</span> 옆에
+            <span class="mono">_internal</span> 폴더가 있습니다. 프로그램의 알맹이가 다 그 안에
+            들어 있어서, exe만 바탕화면으로 꺼내 놓으면 실행되지 않습니다.
+          </p>
+          <p>
+            <strong>폴더째 옮기고, 바로가기를 만들어 쓰세요.</strong>
+          </p>
+        </div>
+
+        <div class="note">
+          <p class="note-tag">첫 실행</p>
+          <p class="note-title">압축을 풀기 전에 ‘차단 해제’를 하면 안 뜹니다</p>
+          <p>
+            받은 zip 파일에 <strong>오른쪽 클릭 → 속성 → 차단 해제 → 확인</strong>을 하고
+            압축을 푸시면 파란 경고창이 <strong>아예 안 뜹니다.</strong> 순서가 중요합니다 —
+            푼 뒤에는 파일마다 따로 해 주셔야 합니다.
+            (<strong>설명서 › 설치</strong>에 그림으로 짚어 두었습니다.)
+          </p>
+          <p>
+            깜빡하고 그냥 푸셨어도 괜찮습니다. “Windows의 PC 보호”가 뜨면
+            <strong>추가 정보 → 실행</strong>을 누르세요. 코드 서명을 받지 않은 개인 제작
+            프로그램이라 뜨는 것으로, 프로그램에 문제가 있다는 뜻은 아닙니다.
+            <strong>맨 처음 한 번뿐이고</strong>, 뒤에 스스로 업데이트할 때는 뜨지 않습니다.
+          </p>
+        </div>
+
+        <div class="note">
+          <p class="note-tag">필요한 프로그램</p>
+          <p class="note-title">한글(HWP)이 깔려 있어야 합니다</p>
+          <p>
+            이지테는 한글을 직접 부려서 문서를 만듭니다. 한글이 없으면 문제지가 나오지 않습니다.
+            작업 중 한글 창이 저절로 떴다 닫히는 것은 정상이니 그동안 손대지 마세요.
+          </p>
+        </div>
+
+        <div class="note">
+          <p class="note-tag">API 키</p>
+          <p class="note-title">키는 두 개, 각자 발급받아 넣습니다</p>
+          <p>
+            프로그램에는 어떤 키도 들어 있지 않습니다. <strong>구글 AI 스튜디오</strong>와
+            <strong>NVIDIA NIM</strong>에서 무료 키를 받아 <strong>설정 › API 키</strong>에
+            넣으세요. 넣은 키는 그 컴퓨터에만 저장됩니다.
+          </p>
+          <p>
+            하나만 넣어도 문제지는 나오지만, <strong>정답 검산은 두 곳이 있어야 제대로 됩니다.</strong>
+            한 곳만 넣으면 모든 문항에 ‘한 모델만 풀었습니다’가 붙습니다.
+          </p>
+        </div>
+
+        <div class="note">
+          <p class="note-tag">검토</p>
+          <p class="note-title">나온 문항은 반드시 사람이 봐야 합니다</p>
+          <p>
+            AI가 만든 문항에는 틀린 곳이 섞일 수 있습니다. 옮겨 적은 문항도 원본과 글자가
+            어긋날 수 있어, 프로그램이 <strong>‘원본과 견줘 확인하세요’</strong>라고 함께
+            적어 드립니다.
+          </p>
+          <p>
+            <strong>시험에 그대로 쓰기 전에 꼭 검토해 주세요.</strong> 확인이 필요한 문항은
+            프로그램이 따로 표시해 둡니다.
+          </p>
+        </div>
+
+        <div class="note">
+          <p class="note-tag">저장 위치</p>
+          <p class="note-title">만든 파일은 양식 파일 옆에 저장됩니다</p>
+          <p>
+            따로 정하지 않으면 올린 양식이 있는 폴더에 저장됩니다. 어디에 저장되는지는
+            <strong>설정</strong> 화면에서 경로로 확인하실 수 있습니다.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>이지테 Easy Test · <span id="rel-ver2">V1.0.0</span></span>
+    <span>만든 이 <a href="https://www.instagram.com/hirame.ki" target="_blank" rel="noopener">@hirame.ki</a></span>
+  </footer>
+
+</div>
+
+<script>
+/* 릴리스에서 읽어 온 값으로 **판 번호·날짜·파일 크기**를 채운다.
+
+   ⚠️⚠️ **내려받기가 이것에 기대면 안 된다.** 단추의 주소(`latest/download/
+   EasyTest-win64.zip`)만으로 이미 늘 최신이 받아진다 — 자산 이름을 판마다
+   같게 두는 것이 그 조건이다. 여기서는 화면에 적힌 숫자만 손본다.
+
+   못 물어보는 경우가 여럿이다 (오프라인 · 시간당 60회 한도 초과 · JS 차단 ·
+   `file://` 로 연 경우). 그때는 아무것도 안 하고 넘어가고, HTML 에 적힌
+   값이 그대로 보인다. **내려받기는 그래도 된다.** */
+(function(){
+  fetch('https://api.github.com/repos/esquire0-cell/easy/releases/latest',
+        {headers:{'Accept':'application/vnd.github+json'}})
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(rel){
+      if (!rel) return;
+      var put = function(id, text){
+        var el = document.getElementById(id);
+        if (el && text) el.textContent = text;
+      };
+      /* 태그가 판 번호다 (`v1.0.1`). 앞의 v 는 크게 적어 온 모양에 맞춘다 */
+      var ver = String(rel.tag_name || '').replace(/^v/i, '');
+      if (ver) { put('rel-ver', 'V' + ver); put('rel-ver2', 'V' + ver); }
+      if (rel.published_at) put('rel-date', String(rel.published_at).slice(0, 10));
+
+      var zip = null, list = rel.assets || [];
+      for (var i = 0; i < list.length; i++) {
+        var n = String(list[i].name || '').toLowerCase();
+        /* 소스 tarball 이 저절로 붙으니 zip 만 고른다 */
+        if (n.slice(-4) === '.zip') { zip = list[i]; break; }
+      }
+      if (!zip) return;
+      put('dl-name', zip.name);
+      if (zip.size) put('dl-size', (zip.size / 1048576).toFixed(1) + 'MB');
+    })
+    .catch(function(){ /* 조용히 넘어간다 */ });
+})();
+
+(function(){
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.tab'));
+  function show(i){
+    tabs.forEach(function(t, n){
+      var on = n === i;
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+    });
+  }
+  tabs.forEach(function(t, i){
+    t.tabIndex = i === 0 ? 0 : -1;
+    t.addEventListener('click', function(){ show(i); });
+    t.addEventListener('keydown', function(e){
+      var j = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : -1;
+      if (j < 0 || j >= tabs.length) return;
+      e.preventDefault();
+      show(j);
+      tabs[j].focus();
+    });
+  });
+})();
+</script>
+</body>
+</html>
