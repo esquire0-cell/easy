@@ -240,6 +240,32 @@ ul.plain{margin:0 0 var(--s3);padding:0 0 0 20px;color:var(--pencil);}
 ul.plain li{margin-bottom:9px;max-width:58ch;}
 ul.plain li strong{color:var(--ink);font-weight:500;}
 
+/* 접어 두는 대목.
+   ⚠️⚠️ **먼저 들이밀면 없던 의심이 생긴다.** 설치 탭은 '어떻게 까나' 를
+   보러 오는 곳인데, 거기서 백신 검사 결과를 세 문단씩 펼쳐 놓으면 아무
+   생각 없던 사람도 '이거 문제 있나' 로 간다. 그렇다고 **빼면 안 된다** —
+   의심하는 사람은 어차피 스스로 찾고, 그때 아무 말이 없으면 '숨겼다' 가
+   된다. 제목만 두고 접는다. 궁금한 사람만 연다. */
+details.more{
+  margin:var(--s3) 0;max-width:60ch;
+  border-top:1px solid var(--hair);border-bottom:1px solid var(--hair);
+}
+details.more>summary{
+  cursor:pointer;list-style:none;padding:14px 0;
+  font-family:var(--B);font-size:14px;color:var(--pencil);
+  display:flex;align-items:center;gap:9px;
+}
+details.more>summary::-webkit-details-marker{display:none;}
+details.more>summary::before{
+  content:"+";font-family:var(--M);font-size:14px;color:var(--red);
+}
+details.more[open]>summary::before{content:"\2212";}
+details.more>summary:hover{color:var(--ink);}
+details.more>summary:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
+details.more>summary strong{color:var(--ink);font-weight:500;}
+details.more .more-body{padding:2px 0 var(--s2);}
+details.more .more-body>*:last-child{margin-bottom:0;}
+
 code,.mono{
   font-family:var(--M);font-size:.9em;
   background:var(--red-soft);padding:2px 7px;color:var(--ink);
@@ -443,9 +469,81 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
           받는 서명이 없어서 그렇습니다. 백신이 잠시 잡아 두는 일도 있습니다.
         </p>
         <p>
-          이 경고는 <strong>맨 처음 한 번뿐입니다.</strong> 뒤에 새 버전이 나와 프로그램이 스스로
+          이 <strong>파란 창</strong>은 맨 처음 한 번뿐입니다. 뒤에 새 버전이 나와 프로그램이 스스로
           업데이트할 때는 뜨지 않습니다 — 브라우저를 거치지 않고 받아서 표식이 안 붙습니다.
         </p>
+
+        <h3 class="warn-head">V3·알약 같은 백신이 물을 때</h3>
+        <p>
+          백신에서 이런 알림이 뜰 수 있습니다.
+        </p>
+        <p style="font-family:var(--M);font-size:13px;line-height:1.7;color:var(--ink);
+                  border-left:2px solid var(--red);background:var(--red-soft);
+                  padding:12px 16px;margin:0 0 var(--s3);max-width:58ch;">
+          프로그램 실행 알림<br>
+          클라우드 평판과 행위를 기반으로 파일의 실행을 탐지했습니다.
+        </p>
+        <p>
+          <strong>바이러스가 나온 것이 아닙니다.</strong> “이 파일을 처음 본다”는 뜻입니다. 백신은
+          많은 사람이 오래 써 온 파일을 안전하다고 보는데, 이지테는 개인이 만들어 쓰는 사람이 적고
+          <strong>새 버전을 낼 때마다 파일이 새것이 되어</strong> 그 명단에 오르기까지 시간이 걸립니다.
+        </p>
+        <ul class="plain">
+          <li><strong>V3</strong> — <strong>[실행 후 다음부터 묻지 않음]</strong>을 고르세요.</li>
+          <li><strong>알약·기타 백신</strong> — <strong>허용</strong> 또는 <strong>실행</strong>을 고르세요.</li>
+        </ul>
+        <p>
+          V3에서 [실행 후 다음부터 묻지 않음]이 저장되지 않고 자꾸 물어본다면, V3
+          <strong>환경 설정 › Active Defense</strong>에서 <strong>ASD 네트워크 참여</strong>와
+          <strong>Active Defense</strong>를 <strong>사용</strong>으로 켜 주세요. 알림 창에도 같은
+          안내가 붉은 글씨로 적혀 있습니다.
+        </p>
+        <p>
+          <strong>이 알림은 업데이트한 뒤에도 한 번 더 뜰 수 있습니다.</strong> 파란 창과 달리
+          백신은 파일이 바뀌면 다시 처음 보는 것으로 여기기 때문입니다. 놀라지 마시고 똑같이
+          처리해 주세요.
+        </p>
+
+        <details class="more">
+          <summary><strong>직접 검사해 보고 싶으시면</strong> — 결과를 읽는 법</summary>
+          <div class="more-body">
+            <p>
+              <a href="https://www.virustotal.com" target="_blank" rel="noopener">바이러스토탈</a>에
+              파일을 올리면 백신 60여 개가 한꺼번에 검사해 줍니다. 다만 결과를 보시기 전에
+              <strong>미리 일러둘 것이 있습니다.</strong> 위에 <strong>빨간 숫자</strong>가 뜹니다.
+              이지테는 보통 <strong>60여 곳 중 한두 곳</strong>이 걸고넘어집니다.
+            </p>
+            <p>그 숫자는 이렇게 읽으시면 됩니다.</p>
+            <ul class="plain">
+              <li>
+                <strong>선생님이 쓰시는 백신을 목록에서 찾아보세요.</strong> 목록의
+                <span class="mono">AhnLab-V3</span>는 <strong>Undetected(이상 없음)</strong>입니다.
+                알약(<span class="mono">ALYac</span>)·아비라·카스퍼스키 같은 이름 있는 백신도
+                모두 초록입니다.
+              </li>
+              <li>
+                <strong>빨간 쪽에 악성코드 이름이 없습니다.</strong> 진짜 악성코드라면 백신이
+                이름을 붙입니다. 그런데 거기 뜬 것은
+                <span class="mono">W32.Malware.104F9A35</span>처럼 <strong>번호</strong>이거나
+                <span class="mono">Suspicious Archive</span>(수상한 압축파일)처럼
+                <strong>분류</strong>입니다. “무엇을 찾았다”가 아니라 “생김새가 좀 그렇다”는
+                뜻입니다.
+              </li>
+              <li>
+                <strong>왜 그렇게 보이냐면</strong> — 이지테는 파이썬으로 만들어 한 덩이로 묶은
+                프로그램인데, 이 묶는 방식이 악성코드가 자기를 숨길 때 쓰는 방식과 겉모습이
+                비슷합니다. 속을 안 보고 겉만 기계적으로 판단하는 백신 몇 개가 그래서
+                걸고넘어집니다.
+              </li>
+            </ul>
+            <p>
+              서명을 받지 않은 개인 제작 프로그램에서
+              <strong>한두 곳이 걸리는 것은 흔한 일입니다.</strong> 아예 0으로 만들려면 해마다
+              수십만 원을 내고 코드 서명 인증서를 사야 하는데, 무료로 드리는 프로그램이라 아직
+              하지 못하고 있습니다.
+            </p>
+          </div>
+        </details>
       </div>
 
       <div class="panel" role="tabpanel" id="p-2" aria-labelledby="t-2" tabindex="0" hidden>
@@ -576,9 +674,22 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
         <ul class="plain">
           <li><strong>설정과 키, 지난 기록은 그대로 남습니다.</strong> 다시 넣지 않으셔도 됩니다.</li>
           <li>업데이트 중에는 만들던 문서를 <strong>먼저 저장</strong>해 주세요.</li>
+          <li>갱신하는 동안 <strong>검은 창이 잠깐 뜹니다. 닫지 마세요.</strong> 저절로 닫힙니다.</li>
           <li>인터넷이 안 되면 아무 말 없이 넘어갑니다. 프로그램은 그대로 켜집니다.</li>
           <li>직접 확인하시려면 <strong>설정 › 업데이트 확인</strong>을 누르세요.</li>
         </ul>
+
+        <h3 class="warn-head">업데이트한 뒤에 백신이 물을 수 있습니다</h3>
+        <p>
+          갱신이 끝나고 프로그램이 다시 켜질 때 <strong>V3 같은 백신이 한 번 물어볼 수 있습니다.</strong>
+          새 버전은 백신이 보기에 <strong>처음 보는 파일</strong>이라 그렇습니다. 고장이 났거나
+          업데이트가 잘못된 것이 아닙니다.
+        </p>
+        <p>
+          V3라면 <strong>[실행 후 다음부터 묻지 않음]</strong>을, 다른 백신이라면
+          <strong>허용</strong>을 고르시면 됩니다. 자세한 설명은
+          <strong>설명서 › 설치</strong> 탭 아래쪽에 적어 두었습니다.
+        </p>
       </div>
     </div>
   </section>
@@ -619,7 +730,24 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
             깜빡하고 그냥 푸셨어도 괜찮습니다. “Windows의 PC 보호”가 뜨면
             <strong>추가 정보 → 실행</strong>을 누르세요. 코드 서명을 받지 않은 개인 제작
             프로그램이라 뜨는 것으로, 프로그램에 문제가 있다는 뜻은 아닙니다.
-            <strong>맨 처음 한 번뿐이고</strong>, 뒤에 스스로 업데이트할 때는 뜨지 않습니다.
+            이 <strong>파란 창</strong>은 맨 처음 한 번뿐이고, 뒤에 스스로 업데이트할 때는
+            뜨지 않습니다.
+          </p>
+        </div>
+
+        <div class="note">
+          <p class="note-tag">백신</p>
+          <p class="note-title">V3가 물어보면 ‘실행 후 다음부터 묻지 않음’</p>
+          <p>
+            백신에서 <strong>“클라우드 평판과 행위를 기반으로 파일의 실행을 탐지했습니다”</strong>라는
+            알림이 뜰 수 있습니다. 바이러스가 나온 것이 아니라 <strong>처음 보는 파일</strong>이라는
+            뜻입니다. V3는 <strong>[실행 후 다음부터 묻지 않음]</strong>, 다른 백신은
+            <strong>허용</strong>을 골라 주세요.
+          </p>
+          <p>
+            위의 파란 창과 달리 <strong>이 알림은 업데이트한 뒤에도 한 번 더 뜰 수 있습니다.</strong>
+            새 버전은 백신이 보기에 또 처음 보는 파일이기 때문입니다.
+            (<strong>설명서 › 설치</strong>에 자세히 적어 두었습니다.)
           </p>
         </div>
 
