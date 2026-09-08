@@ -81,20 +81,51 @@ body{
 }
 .stamp b{color:var(--red);font-weight:500;}
 
-.masthead{padding:var(--s5) 0 var(--s4);}
+/* ⚠️ 맨 위 알림이 첫 화면을 나눠 쓰므로 머리를 줄였다 (아래 `.alert`). */
+.masthead{padding:var(--s4) 0 var(--s4);}
 .eyebrow{
   font-family:var(--M);font-size:11px;letter-spacing:.3em;
-  text-transform:uppercase;color:var(--red);margin:0 0 var(--s3);
+  text-transform:uppercase;color:var(--red);margin:0 0 var(--s2);
 }
 h1{
   font-family:var(--F);font-weight:800;
-  font-size:clamp(52px,9vw,104px);line-height:.95;letter-spacing:-.02em;
+  /* ⚠️ 줄인 값이다 (본디 52~104px). 맨 위 알림이 **스크롤 없이 보여야**
+     하는데, 제목이 첫 화면을 거의 다 먹고 있었다. */
+  font-size:clamp(38px,6vw,68px);line-height:1;letter-spacing:-.02em;
   margin:0 0 var(--s2);text-wrap:balance;
 }
 h1 .en{
   display:block;font-family:var(--M);font-weight:400;
-  font-size:clamp(13px,1.6vw,17px);letter-spacing:.42em;
-  color:var(--faint);margin-top:18px;text-transform:uppercase;
+  font-size:clamp(12px,1.3vw,15px);letter-spacing:.42em;
+  color:var(--faint);margin-top:12px;text-transform:uppercase;
+}
+
+/* ── 맨 위 알림 ────────────────────────────────
+   ⚠️⚠️ **여기 있는 까닭.** 업데이트가 멈춘 분은 프로그램 안에서 고침을
+   받을 길이 없다 — 업데이트를 지휘하는 절차가 그분 PC 의 **옛 판 안에**
+   들어 있기 때문이다. 이 페이지에서 직접 받으시는 것이 유일한 길이라,
+   받으러 오신 분 눈에 **스크롤 전에** 걸려야 한다. 아래로 내리면 못 본다. */
+.alert{
+  border:2px solid var(--red);background:var(--red-soft);
+  padding:20px 24px;margin:var(--s3) 0 0;
+}
+.alert-tag{
+  font-family:var(--M);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red);margin:0 0 8px;
+}
+.alert-title{
+  font-family:var(--F);font-size:clamp(17px,2.1vw,21px);font-weight:700;
+  line-height:1.55;margin:0 0 10px;color:var(--ink);
+}
+.alert p{margin:0;color:var(--pencil);font-size:14px;max-width:62ch;}
+.alert p + p{margin-top:8px;}
+.alert strong{color:var(--ink);font-weight:600;}
+.alert ol{margin:10px 0 0;padding-left:1.3em;color:var(--pencil);font-size:14px;}
+.alert li{margin:0 0 4px;}
+.alert-tail{
+  margin-top:12px !important;padding-top:10px;
+  border-top:1px solid var(--rule);
+  font-size:13px !important;color:var(--faint) !important;
 }
 .lede{
   font-family:var(--F);font-size:clamp(19px,2.4vw,25px);
@@ -108,6 +139,17 @@ h1 .en{
   font-size:13.5px;padding-left:.8em;
   border-left:2px solid var(--rule,#DCD6CC);
 }
+
+/* ── 이번 판에서 고친 것 ───────────────────── */
+.fixes{display:grid;gap:1px;background:var(--rule);border:1px solid var(--rule);}
+.fix{background:var(--paper);padding:22px 24px;}
+.fix-tag{
+  font-family:var(--M);font-size:10.5px;letter-spacing:.16em;
+  text-transform:uppercase;color:var(--red);margin:0 0 8px;
+}
+.fix-title{font-family:var(--F);font-size:18px;font-weight:700;margin:0 0 8px;line-height:1.5;}
+.fix p{margin:0;color:var(--pencil);font-size:14px;max-width:62ch;line-height:1.85;}
+.fix p strong{color:var(--ink);font-weight:600;}
 
 /* ── 양식 정보표 ───────────────────────────── */
 .form-table{
@@ -348,8 +390,37 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   <div class="sheet-top">
     <div class="stamp">
       <span>Hirameki · 교사용 도구</span>
-      <span><b id="rel-ver">V1.0.16</b> · <span id="rel-date">2026-08-27</span></span>
+      <span><b id="rel-ver">V1.0.36</b> · <span id="rel-date">2026-09-08</span></span>
     </div>
+  </div>
+
+  <!-- ⚠️ 머리글보다 **위**에 둔다. 업데이트가 멈춘 분에게는 이 페이지에서
+       직접 받는 것이 유일한 길이라, 스크롤 전에 보여야 한다. -->
+  <div class="alert" role="note">
+    <p class="alert-tag">v1.0.36 · 먼저 확인해 주세요</p>
+    <p class="alert-title">
+      업데이트를 누르신 뒤 <strong>검은 창이 뜬 채 넘어가지 않으셨다면</strong>,
+      아래에서 한 번만 직접 받아 주세요.
+    </p>
+    <p>
+      그 자리에서는 <strong>아직 아무것도 바뀌지 않은 상태</strong>입니다.
+      검은 창을 닫으셔도 쓰시던 프로그램은 그대로입니다.
+    </p>
+    <p>
+      이 문제는 v1.0.36 에서 고쳤습니다. 다만 업데이트를 지휘하는 절차가
+      <strong>지금 깔려 있는 옛 판 안에</strong> 들어 있어서, 고침이
+      자동으로는 닿지 않습니다.
+    </p>
+    <ol>
+      <li>검은 창이 떠 있으면 닫습니다.</li>
+      <li>아래 <strong>내려받기</strong>로 zip 을 받습니다.</li>
+      <li>압축을 풀어 <strong>쓰시던 프로그램 폴더에 덮어씁니다.</strong>
+          (설정·키·지난 기록은 다른 곳에 있어 그대로 남습니다)</li>
+    </ol>
+    <p class="alert-tail">
+      한 번만 이렇게 하시면 그다음부터는 자동 업데이트가 정상으로 돕니다.
+      겪지 않으신 분은 평소대로 프로그램 안에서 업데이트하시면 됩니다.
+    </p>
   </div>
 
   <header class="masthead">
@@ -407,6 +478,74 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
         target="_blank" rel="noopener">깃허브 릴리스</a>에서 받으세요</span>
     </div>
   </header>
+
+  <!-- 이번 판에서 고친 것. 자세한 것은 깃허브 릴리스 본문(배포안내.md)에 있다. -->
+  <section id="고친것">
+    <div class="sec-head">
+      <span class="sec-no">v1.0.36</span>
+      <h2>이번 판에서 고친 것</h2>
+    </div>
+    <p class="sec-hint">
+      문항을 만드는 기능은 v1.0.35 와 같습니다. 켜고 끄고 갱신하는 자리에서
+      멈추던 것들을 고쳤습니다.
+    </p>
+    <div class="fixes">
+      <div class="fix">
+        <p class="fix-tag">업데이트</p>
+        <p class="fix-title">검은 창이 뜬 채 넘어가지 않던 일</p>
+        <p>
+          프로그램이 안 꺼질 때 <strong>하염없이 기다리는 자리</strong>와,
+          덮어쓰기에 실패했을 때 <strong>"아무 키나 누르세요" 에서 멈추는 자리</strong>가
+          있었습니다. 둘 다 저절로 끝나게 했고, 프로그램이 10초 안에 안 꺼지면
+          스스로 끝내서 갱신이 제대로 이어집니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">안전 모드</p>
+        <p class="fix-title">한 번 걸리면 안 풀리던 일</p>
+        <p>
+          창이 안 뜨는 컴퓨터를 위해 화면 기능을 한 겹씩 줄여 켜는 장치가
+          있습니다. 그런데 <strong>화면과 상관없는 까닭</strong>으로 걸리면
+          — 갱신 도중 끊겼거나, 백신이 껐거나, 전원이 나갔거나 — 그 뒤로 영영
+          줄인 채 켜졌습니다. 이제 몇 번 잘 켜지면 한 겹 덜 줄이고 켜 보며
+          <strong>저절로 제자리를 찾아갑니다.</strong>
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">설정</p>
+        <p class="fix-title">'안전 모드 풀기' 를 눌러도 도로 걸리던 일</p>
+        <p>
+          푸신 뒤 프로그램을 끝낼 때 그 자국이 다시 적히고 있었습니다.
+          이제 누르신 대로 풀립니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">바로가기</p>
+        <p class="fix-title">"지정한 장치, 경로, 파일에 액세스할 수 없습니다"</p>
+        <p>
+          프로그램 폴더를 옮기시면 바탕화면 바로가기가 없는 곳을 가리키게 되고,
+          윈도우가 이 말을 띄웁니다. <strong>백신 경고와 글자가 같아</strong>
+          백신을 의심하게 되는 자리였습니다. 이제 켤 때 알아서 고쳐 놓습니다
+          (가리키는 곳이 멀쩡하면 손대지 않습니다).
+        </p>
+        <p>
+          ⚠️ 같은 문구가 <strong>백신·설치 위치 때문에도</strong> 뜹니다.
+          그쪽은 프로그램이 못 고치니 <a href="#안열릴때">안 열릴 때</a>를
+          보아 주세요.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">설치 위치</p>
+        <p class="fix-title">업데이트가 적용될 수 없는 자리를 미리 알려 드립니다</p>
+        <p>
+          <code>C:\Program Files</code> 안이나 OneDrive·네트워크 드라이브에
+          깔려 있으면 <strong>새 판을 다 받고 나서 덮어쓰기에 실패</strong>합니다.
+          이제 켤 때 한 번 알려 드리고, 업데이트도 <strong>받기 전에</strong>
+          멈춰서 헛되이 받지 않습니다.
+        </p>
+      </div>
+    </div>
+  </section>
 
   <section>
     <div class="sec-head">
@@ -760,7 +899,10 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
         <ul class="plain">
           <li><strong>설정과 키, 지난 기록은 그대로 남습니다.</strong> 다시 넣지 않으셔도 됩니다.</li>
           <li>업데이트 중에는 만들던 문서를 <strong>먼저 저장</strong>해 주세요.</li>
-          <li>갱신하는 동안 <strong>검은 창이 잠깐 뜹니다. 닫지 마세요.</strong> 저절로 닫힙니다.</li>
+          <li>갱신하는 동안 <strong>검은 창이 잠깐 뜹니다.</strong> 몇 초면 저절로 닫힙니다.
+              오래 그대로면 닫으셔도 됩니다 — 그때는 아직 아무것도 바뀌지 않은 상태라
+              프로그램이 상하지 않습니다. 그다음 <a href="#고친것">이 페이지에서 직접</a>
+              받아 덮어써 주세요.</li>
           <li>인터넷이 안 되면 아무 말 없이 넘어갑니다. 프로그램은 그대로 켜집니다.</li>
           <li>직접 확인하시려면 <strong>설정 › 업데이트 확인</strong>을 누르세요.</li>
         </ul>
@@ -775,6 +917,82 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
           V3라면 <strong>[실행 후 다음부터 묻지 않음]</strong>을, 다른 백신이라면
           <strong>허용</strong>을 고르시면 됩니다. 자세한 설명은
           <strong>설명서 › 설치</strong> 탭 아래쪽에 적어 두었습니다.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⚠️⚠️ **한 오류 문구에 까닭이 넷이다.** "지정한 장치, 경로, 파일에
+       액세스할 수 없습니다" 는 백신이 검사 중일 때·격리했을 때·바로가기가
+       깨졌을 때·깔린 자리가 나쁠 때 똑같이 뜬다. 넷 중 셋은 프로그램이
+       못 고치므로 여기서 갈라 드린다.
+       ⚠️ **"여러 번 눌러 보세요" 라고 쓰지 않는다.** 백신이 검사 중일 때만
+       듣는 말이고(그것도 클릭이 아니라 시간이 푸는 것이다), 나머지 셋에서는
+       몇 번을 눌러도 영영 안 열린다 — 진짜 까닭을 못 찾은 채 포기하시게 된다. -->
+  <section id="안열릴때">
+    <div class="sec-head">
+      <span class="sec-no">안 열릴 때</span>
+      <h2>"액세스할 수 없습니다" 가 뜬다면</h2>
+    </div>
+    <p class="sec-hint">
+      프로그램을 여실 때 <strong>"지정한 장치, 경로, 파일에 액세스할 수
+      없습니다"</strong> 가 뜨는 경우가 있습니다. 같은 문구가 서로 다른 까닭에서
+      나오므로, 아래 차례대로 해 보시면 어느 쪽인지 갈립니다.
+    </p>
+    <div class="fixes">
+      <div class="fix">
+        <p class="fix-tag">1단계</p>
+        <p class="fix-title">10초쯤 기다렸다가 <strong>한 번만</strong> 다시 열어 보세요</p>
+        <p>
+          백신이 프로그램을 처음 검사하는 중이라 잠깐 이렇게 나올 수 있습니다.
+          검사가 끝나면 그냥 열립니다. 대부분 여기서 풀립니다.
+        </p>
+        <p>
+          <strong>여러 번 연달아 누르지는 마세요.</strong> 클릭이 푸는 것이
+          아니라 시간이 푸는 것이고, 연달아 누르면 "이미 실행 중입니다" 창이
+          대신 뜹니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">2단계</p>
+        <p class="fix-title">백신의 격리함을 열어 보세요</p>
+        <p>
+          V3 는 <strong>격리소</strong>, 다른 백신은 <strong>격리함</strong>
+          입니다. 이지테스트가 들어 있으면 복원하고 예외로 등록해 주세요.
+          여기 있으면 기다려도 열리지 않습니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">3단계</p>
+        <p class="fix-title">설치 폴더의 <code>이지테.exe</code> 를 직접 열어 보세요</p>
+        <p>
+          바탕화면 바로가기 말고 폴더 안의 파일을 직접 여시는 것입니다.
+          <strong>이쪽은 열리는데 바로가기만 안 된다면</strong> 바로가기가
+          옛 경로를 가리키고 있는 것입니다 — 한 번 직접 여시면 v1.0.36 부터는
+          프로그램이 알아서 고쳐 놓습니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">4단계</p>
+        <p class="fix-title">깔려 있는 자리를 옮겨 주세요</p>
+        <p>
+          <code>C:\Program Files</code> 안, OneDrive 같은 동기화 폴더 안,
+          네트워크 드라이브에 두시면 프로그램이 제 파일을 쓰지 못해
+          <strong>업데이트도 적용되지 않습니다.</strong> 바탕화면이나 문서
+          폴더처럼 평소 파일을 만드실 수 있는 곳으로 폴더째 옮겨 주세요.
+        </p>
+        <p>
+          v1.0.36 부터는 이런 자리에 깔려 있으면 <strong>프로그램이 켤 때
+          알려 드립니다.</strong>
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">그래도 안 되면</p>
+        <p class="fix-title">어느 단계에서 막히셨는지 알려 주세요</p>
+        <p>
+          네 가지가 다 같은 문구로 나오기 때문에, <strong>어디까지 해 보셨는지
+          한 줄</strong>만 주시면 원인을 바로 좁힐 수 있습니다. 3단계에서
+          exe 는 열리셨는지가 특히 중요합니다.
         </p>
       </div>
     </div>
