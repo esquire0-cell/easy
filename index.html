@@ -390,35 +390,44 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   <div class="sheet-top">
     <div class="stamp">
       <span>Hirameki · 교사용 도구</span>
-      <span><b id="rel-ver">V1.0.37</b> · <span id="rel-date">2026-09-08</span></span>
+      <span><b id="rel-ver">V1.0.38</b> · <span id="rel-date">2026-09-09</span></span>
     </div>
   </div>
 
   <!-- ⚠️ 머리글보다 **위**에 둔다. 업데이트가 멈춘 분에게는 이 페이지에서
        직접 받는 것이 유일한 길이라, 스크롤 전에 보여야 한다. -->
   <div class="alert" role="note">
-    <p class="alert-tag">v1.0.36 · 먼저 확인해 주세요</p>
+    <p class="alert-tag">먼저 확인해 주세요</p>
     <p class="alert-title">
-      업데이트를 누르신 뒤 <strong>검은 창이 뜬 채 넘어가지 않으셨다면</strong>,
-      아래에서 한 번만 직접 받아 주세요.
+      아래 두 경우에는 <strong>프로그램 안의 업데이트를 쓰실 수 없습니다.</strong>
+      이 페이지에서 한 번만 직접 받아 주세요.
     </p>
+    <ul>
+      <li><strong>첫 화면에서 멈춘 경우</strong> — 프로그램은 켜지는데
+          「무엇을 도와드릴까요?」에서 굳어 아무것도 안 눌리고, 껐다 켜도
+          마찬가지인 경우입니다. (v1.0.38 에서 다뤘습니다)</li>
+      <li><strong>검은 창이 뜬 채 넘어가지 않은 경우</strong> — 업데이트를
+          누르신 뒤 그렇게 되셨다면, 그 자리에서는
+          <strong>아직 아무것도 바뀌지 않은 상태</strong>입니다. 검은 창을
+          닫으셔도 쓰시던 프로그램은 그대로입니다.
+          (v1.0.36 에서 고쳤습니다)</li>
+    </ul>
     <p>
-      그 자리에서는 <strong>아직 아무것도 바뀌지 않은 상태</strong>입니다.
-      검은 창을 닫으셔도 쓰시던 프로그램은 그대로입니다.
-    </p>
-    <p>
-      이 문제는 v1.0.36 에서 고쳤습니다. 다만 업데이트를 지휘하는 절차가
-      <strong>지금 깔려 있는 옛 판 안에</strong> 들어 있어서, 고침이
-      자동으로는 닿지 않습니다.
+      두 경우 모두 <strong>고침이 자동으로는 닿지 않습니다.</strong> 업데이트를
+      지휘하는 절차가 지금 깔려 있는 옛 판 안에 들어 있고, 멈춘 상태에서는
+      업데이트를 누르실 수조차 없기 때문입니다.
     </p>
     <ol>
-      <li>검은 창이 떠 있으면 닫습니다.</li>
+      <li>검은 창이 떠 있으면 닫습니다. 멈춰 있으면 작업 관리자에서
+          <strong>이지테스트와 한글(Hwp.exe)을 모두 끝냅니다.</strong></li>
       <li>아래 <strong>내려받기</strong>로 zip 을 받습니다.</li>
       <li>압축을 풀어 <strong>쓰시던 프로그램 폴더에 덮어씁니다.</strong>
-          (설정·키·지난 기록은 다른 곳에 있어 그대로 남습니다)</li>
+          (설정·키· 지난 기록은 다른 곳에 있어 그대로 남습니다)</li>
     </ol>
     <p class="alert-tail">
-      한 번만 이렇게 하시면 그다음부터는 자동 업데이트가 정상으로 돕니다.
+      멈추셨던 분은 덮어쓰기 전에 <strong>한글을 직접 한 번 실행</strong>해서
+      뜨는 창(정품 인증 · 「이전에 비정상 종료되었습니다」 등)을 처리하고
+      닫아 주세요. 그다음 이지테스트를 켜시면 됩니다.
       겪지 않으신 분은 평소대로 프로그램 안에서 업데이트하시면 됩니다.
     </p>
   </div>
@@ -482,51 +491,59 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   <!-- 이번 판에서 고친 것. 자세한 것은 깃허브 릴리스 본문(배포안내.md)에 있다. -->
   <section id="고친것">
     <div class="sec-head">
-      <span class="sec-no">v1.0.37</span>
+      <span class="sec-no">v1.0.38</span>
       <h2>이번 판에서 고친 것</h2>
     </div>
     <p class="sec-hint">
-      문항을 만드는 기능은 v1.0.36 과 같습니다. <strong>알려야 할 자리에서
-      아무 말도 안 하던 것들</strong>을 고쳤습니다.
+      문항을 만드는 기능은 v1.0.37 과 같습니다. <strong>켤 때 첫 화면에서
+      멈추던 일</strong>을 다뤘습니다.
     </p>
     <div class="fixes">
       <div class="fix">
-        <p class="fix-tag">업데이트</p>
-        <p class="fix-title">실패했는데 아무 안내도 안 뜨던 일</p>
+        <p class="fix-tag">첫 화면</p>
+        <p class="fix-title">「무엇을 도와드릴까요?」에서 멈추던 일</p>
         <p>
-          새 판을 받다 실패하거나 갈아 끼우지 못하면 까닭을 알려 드리게 돼
-          있었는데, <strong>그 알림창이 뜨는 순간 자기가 깨져서</strong> 한
-          글자도 안 나왔습니다. '받는 중' 창만 소리 없이 사라지고 그다음이
-          없었습니다. 이제 제대로 뜨고, <strong>[까닭 복사]</strong> 단추로
-          그 값을 그대로 가져가실 수 있습니다.
+          프로그램은 켜질 때 학교 양식을 한 번 읽어 봅니다. 그 일이 한글을
+          부르는 일인데, 한글이 켜지면서 <strong>정품 인증 · 「이전에 비정상
+          종료되었습니다」 · 업데이트 같은 창</strong>을 띄우면 그 창이 눌릴
+          때까지 기다립니다. 그런데 그때 한글은 화면 뒤에 숨어 있어
+          <strong>그 창이 보이지도 않습니다.</strong> 아무 말 없이 굳은 첫
+          화면만 남았습니다.
+        </p>
+        <p>
+          이제 그 사이에 첫 화면에 <strong>「양식을 살펴보는 중입니다」</strong>
+          가 보입니다. 멈춘 것인지 기다리면 되는 것인지 알 수 있습니다.
         </p>
       </div>
       <div class="fix">
-        <p class="fix-tag">설치 위치</p>
-        <p class="fix-title">알려 드린다고 해 놓고 안 뜨던 알림</p>
+        <p class="fix-tag">기록</p>
+        <p class="fix-title">멈춘 경우에만 기록이 안 남던 일</p>
         <p>
-          v1.0.36 에서 “Program Files 나 OneDrive 에 깔려 있으면 켤 때
-          알려 드립니다” 라고 말씀드렸지만, <strong>그 알림은 한 번도 뜨지
-          않았습니다.</strong> 알리는 자리에서 잘못이 나면 조용히 넘어가게
-          돼 있어 그것조차 안 보였습니다. 이제 뜹니다.
+          프로그램이 죽으면 어디서 죽었는지가 기록에 남는데,
+          <strong>멈춘 경우에는 한 줄도 안 남았습니다.</strong> 가장 곤란한
+          고장이 가장 안 보였습니다. 이제 화면이 멈추면 어디서 멈췄는지를
+          프로그램이 스스로 기록해 둡니다.
         </p>
       </div>
       <div class="fix">
-        <p class="fix-tag">예약 실행</p>
-        <p class="fix-title">켜자마자 멈추던 일</p>
+        <p class="fix-tag">강제 종료</p>
+        <p class="fix-title">종료할 때마다 화면 설정이 벗겨지던 일</p>
         <p>
-          정해진 시각에 저절로 문제지를 만들게 하는 예약 실행이 없는 값을
-          보고 있어서 <strong>시작하자마자 멈췄습니다.</strong> 고쳤습니다.
+          멈춰서 강제 종료하실 때마다 프로그램이 그것을 고장으로 세어
+          <strong>화면 설정을 한 겹씩 벗고</strong> 켜졌습니다. 여러 번
+          하시면 글 칸에 한글이 안 쳐지는 상태가 되곤 했는데, 멈춤과는
+          상관없는 엉뚱한 증상이었습니다. 고쳤습니다.
         </p>
       </div>
       <div class="fix">
-        <p class="fix-tag">번호 다시 매기기</p>
-        <p class="fix-title">알 수 없는 영문만 뜨던 일</p>
+        <p class="fix-tag">오류 신고</p>
+        <p class="fix-title">오류 기록을 자동으로 보냅니다</p>
         <p>
-          문항 번호를 다시 매기다 막히면 <code>FileNotFoundError</code> 같은
-          영문만 떴습니다. 한글이 옛 판이거나 보안 프로그램이 임시 폴더를
-          지킬 때 나던 자리입니다. 이제 <strong>무엇이 막혔는지 우리말로</strong>
-          알려 드립니다.
+          오류가 났을 때 그 기록이 다음 실행에 자동으로 갑니다. 보내는 것은
+          <strong>오류 내용과 프로그램 판·환경</strong>뿐이며, 만드신 문항의
+          내용 · 입력하신 키워드 · 문서의 폴더 경로는 보내지 않습니다. 같은
+          오류는 다시 보내지 않습니다. 원하지 않으시면
+          <strong>설정 → 사용량</strong> 에서 끄실 수 있습니다.
         </p>
       </div>
     </div>
@@ -1119,7 +1136,7 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   </section>
 
   <footer>
-    <span>이지테스트 Ez Test · <span id="rel-ver2">V1.0.37</span></span>
+    <span>이지테스트 Ez Test · <span id="rel-ver2">V1.0.38</span></span>
     <span>만든 이 <a href="https://www.instagram.com/hirame.ki" target="_blank" rel="noopener">@hirame.ki</a></span>
   </footer>
 
