@@ -390,7 +390,7 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   <div class="sheet-top">
     <div class="stamp">
       <span>Hirameki · 교사용 도구</span>
-      <span><b id="rel-ver">V1.0.38</b> · <span id="rel-date">2026-09-09</span></span>
+      <span><b id="rel-ver">V1.0.39</b> · <span id="rel-date">2026-09-10</span></span>
     </div>
   </div>
 
@@ -405,7 +405,7 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
     <ul>
       <li><strong>첫 화면에서 멈춘 경우</strong> — 프로그램은 켜지는데
           「무엇을 도와드릴까요?」에서 굳어 아무것도 안 눌리고, 껐다 켜도
-          마찬가지인 경우입니다. (v1.0.38 에서 다뤘습니다)</li>
+          마찬가지인 경우입니다. (v1.0.39 에서 고쳤습니다)</li>
       <li><strong>검은 창이 뜬 채 넘어가지 않은 경우</strong> — 업데이트를
           누르신 뒤 그렇게 되셨다면, 그 자리에서는
           <strong>아직 아무것도 바뀌지 않은 상태</strong>입니다. 검은 창을
@@ -491,59 +491,85 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   <!-- 이번 판에서 고친 것. 자세한 것은 깃허브 릴리스 본문(배포안내.md)에 있다. -->
   <section id="고친것">
     <div class="sec-head">
-      <span class="sec-no">v1.0.38</span>
+      <span class="sec-no">v1.0.39</span>
       <h2>이번 판에서 고친 것</h2>
     </div>
     <p class="sec-hint">
-      문항을 만드는 기능은 v1.0.37 과 같습니다. <strong>켤 때 첫 화면에서
-      멈추던 일</strong>을 다뤘습니다.
+      문항을 만드는 기능은 v1.0.38 과 같습니다. <strong>만들어 둔 문항을
+      잃지 않도록</strong> 다듬고, 프로그램이 소리 없이 꺼지던 자리 셋을
+      고쳤습니다.
     </p>
     <div class="fixes">
       <div class="fix">
-        <p class="fix-tag">첫 화면</p>
-        <p class="fix-title">「무엇을 도와드릴까요?」에서 멈추던 일</p>
+        <p class="fix-tag">문항 보관</p>
+        <p class="fix-title">만들어 둔 문항이 통째로 사라지던 일</p>
         <p>
-          프로그램은 켜질 때 학교 양식을 한 번 읽어 봅니다. 그 일이 한글을
-          부르는 일인데, 한글이 켜지면서 <strong>정품 인증 · 「이전에 비정상
-          종료되었습니다」 · 업데이트 같은 창</strong>을 띄우면 그 창이 눌릴
-          때까지 기다립니다. 그런데 그때 한글은 화면 뒤에 숨어 있어
-          <strong>그 창이 보이지도 않습니다.</strong> 아무 말 없이 굳은 첫
-          화면만 남았습니다.
+          AI 가 문항을 만들어 준 뒤 그것을 한글 문서에 옮겨 쓰는 도중에
+          한글이 튕기면, 만들어 둔 문항이 <strong>아무 데도 남지 않고
+          사라졌습니다.</strong> 처음부터 다시 하시는 수밖에 없었습니다.
+          이제 <strong>한글에 쓰기 전에 먼저 따로 보관합니다.</strong>
+          한글이 어떤 이유로 튕기든 만들어 둔 것은 남습니다.
         </p>
         <p>
-          이제 그 사이에 첫 화면에 <strong>「양식을 살펴보는 중입니다」</strong>
-          가 보입니다. 멈춘 것인지 기다리면 되는 것인지 알 수 있습니다.
+          보관하는 자리는 프로그램 데이터 폴더 안이며 최근 10 뭉치만
+          남습니다. 이 파일은 <strong>오류 자동 신고로 보내지 않습니다</strong>
+          — 문항 내용이 들어 있기 때문입니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">되살리기</p>
+        <p class="fix-title">저장에 실패했을 때 되살리기가 안 돌던 일</p>
+        <p>
+          한글 연결이 끊겨 저장에 실패하면 문제지를 다시 열어 이어 쓰도록
+          만들어 두었는데, 정작 그것이 필요한 자리에서
+          <strong>한 번도 돌지 않고 있었습니다.</strong> 문항 70개를 만들어
+          두고 파일에는 한 자도 안 들어간 채로 끝난 제보가 있었습니다.
+        </p>
+        <p>
+          되살릴 때도 달라졌습니다. 앞부분만 저장된 경우 예전에는 '이미
+          들어 있네' 하고 넘어가 <strong>뒤의 문항이 그대로 사라졌습니다.</strong>
+          이제 문항을 하나하나 문서와 맞대어 보고 <strong>빠진 것만</strong>
+          다시 씁니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">자료 넣기</p>
+        <p class="fix-title">끌어다 놓기만 해도 꺼지던 일</p>
+        <p>
+          PDF 자료를 창에 끌어다 놓는 순간 프로그램이 통째로 사라지는 일이
+          있었습니다. 자료를 읽어 보는 일을 <strong>따로 떼어 돌려서</strong>
+          그 안에서 무슨 일이 생겨도 프로그램은 살아 있게 했습니다. 읽지
+          못한 자료는 목록에 '열 수 없음' 으로 남습니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">양식 바꾸기</p>
+        <p class="fix-title">양식을 바꾸다 소리 없이 꺼지던 일</p>
+        <p>
+          양식을 바꾸거나 초기화할 때 프로그램이 아무 말 없이 사라지는 일이
+          있었습니다. 한글 창을 손으로 먼저 닫으신 뒤에 그렇게 됩니다.
+          고쳤습니다.
+        </p>
+      </div>
+      <div class="fix">
+        <p class="fix-tag">첫 화면</p>
+        <p class="fix-title">굳던 것을 이번에는 실제로 고쳤습니다</p>
+        <p>
+          v1.0.38 은 그 자리에 「양식을 살펴보는 중입니다」를
+          <strong>보여 주기만</strong> 했고, 화면은 여전히 굳어 있었습니다.
+          이제 양식을 살펴보는 일을 화면과 <strong>따로 돌려서</strong>
+          그동안에도 창이 살아 있습니다. 너무 오래 걸리면(3분) 기다리기를
+          그만두고, 한글이 숨은 창을 띄웠을 수 있다는 것과 무엇을 하시면
+          되는지를 알려 드립니다.
         </p>
       </div>
       <div class="fix">
         <p class="fix-tag">기록</p>
-        <p class="fix-title">멈춘 경우에만 기록이 안 남던 일</p>
+        <p class="fix-title">어디서 났는지를 더 자세히 남깁니다</p>
         <p>
-          프로그램이 죽으면 어디서 죽었는지가 기록에 남는데,
-          <strong>멈춘 경우에는 한 줄도 안 남았습니다.</strong> 가장 곤란한
-          고장이 가장 안 보였습니다. 이제 화면이 멈추면 어디서 멈췄는지를
-          프로그램이 스스로 기록해 둡니다.
-        </p>
-      </div>
-      <div class="fix">
-        <p class="fix-tag">강제 종료</p>
-        <p class="fix-title">종료할 때마다 화면 설정이 벗겨지던 일</p>
-        <p>
-          멈춰서 강제 종료하실 때마다 프로그램이 그것을 고장으로 세어
-          <strong>화면 설정을 한 겹씩 벗고</strong> 켜졌습니다. 여러 번
-          하시면 글 칸에 한글이 안 쳐지는 상태가 되곤 했는데, 멈춤과는
-          상관없는 엉뚱한 증상이었습니다. 고쳤습니다.
-        </p>
-      </div>
-      <div class="fix">
-        <p class="fix-tag">오류 신고</p>
-        <p class="fix-title">오류 기록을 자동으로 보냅니다</p>
-        <p>
-          오류가 났을 때 그 기록이 다음 실행에 자동으로 갑니다. 보내는 것은
-          <strong>오류 내용과 프로그램 판·환경</strong>뿐이며, 만드신 문항의
-          내용 · 입력하신 키워드 · 문서의 폴더 경로는 보내지 않습니다. 같은
-          오류는 다시 보내지 않습니다. 원하지 않으시면
-          <strong>설정 → 사용량</strong> 에서 끄실 수 있습니다.
+          고장이 났을 때 어느 자리에서 났는지를 프로그램이 더 자세히
+          기록합니다. 기록하는 것은 자리와 글의 길이·모양뿐이며,
+          <strong>만드신 문항의 글자는 남기지도 보내지도 않습니다.</strong>
         </p>
       </div>
     </div>
@@ -1136,7 +1162,7 @@ footer a:focus-visible{outline:2px solid var(--red);outline-offset:2px;}
   </section>
 
   <footer>
-    <span>이지테스트 Ez Test · <span id="rel-ver2">V1.0.38</span></span>
+    <span>이지테스트 Ez Test · <span id="rel-ver2">V1.0.39</span></span>
     <span>만든 이 <a href="https://www.instagram.com/hirame.ki" target="_blank" rel="noopener">@hirame.ki</a></span>
   </footer>
 
